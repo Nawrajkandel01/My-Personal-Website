@@ -121,6 +121,8 @@ nav ul li a:hover {
     gap: 20px;
 }
 .photo-container img {
+    width: 20%; 
+    height: 20%;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
