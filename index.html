@@ -2,55 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
-  <title>Nawraj Kandel — Digital Portfolio</title>
   <meta
     name="description"
-    content="Nawraj Kandel — building, experimenting and exploring ideas at the intersection of technology and creativity."
+    content="Nawraj Kandel — a personal space for things I build, explore and experiment with."
   />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+  <title>Nawraj Kandel — Digital Space</title>
 
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 </head>
 
 <body>
 
+  <!-- =========================================
+       BACKGROUND
+  ========================================== -->
+
+  <div class="background-grid"></div>
   <div class="noise"></div>
-  <div class="grid"></div>
   <div class="cursor-glow"></div>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="logo">NK<span>.</span></a>
 
-    <div class="nav-links">
+  <!-- =========================================
+       NAVIGATION
+  ========================================== -->
+
+  <header class="navbar">
+
+    <a href="#top" class="logo">
+      NK<span>.</span>
+    </a>
+
+    <nav class="nav-links">
+
+      <a href="#hello">Hello</a>
       <a href="#work">Work</a>
       <a href="#now">Now</a>
       <a href="#contact">Contact</a>
+
+    </nav>
+
+    <div class="nav-status">
+      <span class="status-dot"></span>
+      ONLINE
     </div>
 
-    <div class="status">
-      <span></span>
-      Available
-    </div>
-  </nav>
+  </header>
 
-  <main>
 
-    <!-- HERO -->
+  <main id="top">
+
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
     <section class="hero">
 
       <div class="hero-meta reveal">
-        <span>01 / 03</span>
-        <span>NEPAL — 2026</span>
+
+        <span>01</span>
+
+        <span class="line"></span>
+
+        <span>PERSONAL DIGITAL SPACE</span>
+
       </div>
+
 
       <div class="hero-content">
 
@@ -58,158 +90,256 @@
           DIGITAL CREATOR · BUILDER · EXPLORER
         </p>
 
-        <h1 class="reveal">
-          NAWRAJ<br>
+        <h1 class="hero-title reveal">
+
+          NAWRAJ<br />
+
           <span>KANDEL</span>
+
         </h1>
+
 
         <div class="hero-bottom reveal">
 
-          <p>
-            I build things, break them,<br>
-            understand them — and build<br>
-            them better.
+          <p class="hero-description">
+            I build things, explore ideas, break things,
+            understand them — and build them better.
           </p>
 
-          <a href="#work" class="scroll">
+          <a href="#hello" class="scroll-link">
             <span>SCROLL TO EXPLORE</span>
-            <b>↓</b>
+            <span class="arrow">↓</span>
           </a>
 
         </div>
 
       </div>
 
-      <div class="hero-orbit">
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="orbit-dot"></div>
-      </div>
 
-    </section>
+      <!-- Orbit -->
 
+      <div class="orbit">
 
-    <!-- INTRO -->
-    <section class="statement">
+        <div class="orbit-ring ring-one"></div>
+        <div class="orbit-ring ring-two"></div>
 
-      <div class="section-number">02</div>
-
-      <div class="statement-text reveal">
-        <p class="label">A LITTLE CONTEXT</p>
-
-        <h2>
-          Curious by default.
-          <span>Obsessed with making things work.</span>
-        </h2>
-      </div>
-
-    </section>
-
-
-    <!-- WORK -->
-    <section id="work" class="work">
-
-      <div class="section-head reveal">
-        <div>
-          <p class="label">SELECTED WORK</p>
-          <h2>Things I've built.</h2>
+        <div class="orbit-core">
+          <span>NK</span>
         </div>
 
-        <span class="mono">03 / 03</span>
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         HELLO
+    ========================================== -->
+
+    <section id="hello" class="section hello-section">
+
+      <div class="section-label reveal">
+
+        <span>02</span>
+
+        <span>HELLO</span>
+
+      </div>
+
+
+      <div class="hello-card reveal">
+
+        <div class="card-top">
+
+          <span>HELLO, I'M NAWRAJ</span>
+
+          <span>✦</span>
+
+        </div>
+
+
+        <div class="hello-main">
+
+          <h2>
+            Curious by default.
+            <span>Always building.</span>
+          </h2>
+
+          <p>
+            This is a small corner of the internet where I
+            keep things I make, ideas I'm exploring, and
+            experiments that are worth sharing.
+          </p>
+
+        </div>
+
+
+        <div class="hello-footer">
+
+          <span>BASED SOMEWHERE ON EARTH</span>
+
+          <span>KEEP EXPLORING →</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         WORK
+    ========================================== -->
+
+    <section id="work" class="section work-section">
+
+      <div class="section-label reveal">
+
+        <span>03</span>
+
+        <span>SELECTED WORK</span>
+
+      </div>
+
+
+      <div class="section-heading reveal">
+
+        <h2>
+          Things I've<br />
+          <span>built.</span>
+        </h2>
+
+        <p>
+          A collection of projects, experiments and
+          ideas. More will appear here over time.
+        </p>
+
       </div>
 
 
       <div class="projects">
 
+
         <!-- PROJECT 01 -->
+
         <article class="project reveal">
 
-          <div class="project-number">01</div>
+          <div class="project-number">
+            01
+          </div>
 
-          <div class="project-main">
+          <div class="project-info">
 
-            <div class="project-top">
-              <span>WEB / PRODUCT</span>
-              <span>2026</span>
-            </div>
+            <span class="project-category">
+              DIGITAL · 001
+            </span>
 
-            <h3>Personal<br><em>Digital Space</em></h3>
+            <h3>
+              Personal<br />
+              Digital Space
+            </h3>
 
             <p>
-              A minimal digital identity built around ideas,
-              experiments and things worth putting online.
+              This website. A continuously evolving
+              experiment in design, code and identity.
             </p>
 
             <div class="tags">
+
               <span>HTML</span>
               <span>CSS</span>
               <span>JAVASCRIPT</span>
+
             </div>
 
           </div>
 
-          <div class="project-arrow">↗</div>
+          <div class="project-arrow">
+            ↗
+          </div>
 
         </article>
+
 
 
         <!-- PROJECT 02 -->
+
         <article class="project reveal">
 
-          <div class="project-number">02</div>
+          <div class="project-number">
+            02
+          </div>
 
-          <div class="project-main">
+          <div class="project-info">
 
-            <div class="project-top">
-              <span>EXPERIMENT</span>
-              <span>2026</span>
-            </div>
+            <span class="project-category">
+              EXPERIMENT · 002
+            </span>
 
-            <h3>Ideas in<br><em>Progress</em></h3>
+            <h3>
+              Ideas<br />
+              In Progress
+            </h3>
 
             <p>
-              A collection of experiments, prototypes and
-              small ideas that might become something bigger.
+              Small experiments, prototypes and concepts
+              that are still finding their shape.
             </p>
 
             <div class="tags">
+
               <span>EXPERIMENTAL</span>
               <span>BUILDING</span>
+
             </div>
 
           </div>
 
-          <div class="project-arrow">↗</div>
+          <div class="project-arrow">
+            ↗
+          </div>
 
         </article>
 
 
+
         <!-- PROJECT 03 -->
+
         <article class="project reveal">
 
-          <div class="project-number">03</div>
+          <div class="project-number">
+            03
+          </div>
 
-          <div class="project-main">
+          <div class="project-info">
 
-            <div class="project-top">
-              <span>COMING SOON</span>
-              <span>∞</span>
-            </div>
+            <span class="project-category">
+              LAB · 003
+            </span>
 
-            <h3>Something<br><em>Interesting</em></h3>
+            <h3>
+              Something<br />
+              Interesting
+            </h3>
 
             <p>
-              This space is intentionally empty.
-              The next idea hasn't been built yet.
+              A space reserved for whatever interesting
+              thing comes next.
             </p>
 
             <div class="tags">
-              <span>UNKNOWN</span>
+
+              <span>COMING SOON</span>
+
             </div>
 
           </div>
 
-          <div class="project-arrow">↗</div>
+          <div class="project-arrow">
+            ↗
+          </div>
 
         </article>
 
@@ -218,38 +348,83 @@
     </section>
 
 
-    <!-- NOW -->
-    <section id="now" class="now">
 
-      <div class="section-number">04</div>
+    <!-- =========================================
+         NOW
+    ========================================== -->
 
-      <div class="now-content reveal">
+    <section id="now" class="section now-section">
 
-        <p class="label">CURRENTLY</p>
+      <div class="section-label reveal">
 
-        <h2>
-          Exploring.
-          <br>
-          <span>Learning.</span>
-          <br>
-          Building.
-        </h2>
+        <span>04</span>
 
-        <div class="now-list">
+        <span>NOW</span>
 
-          <div>
+      </div>
+
+
+      <div class="now-layout">
+
+        <div class="now-title reveal">
+
+          <p class="eyebrow">
+            CURRENTLY
+          </p>
+
+          <h2>
+            Exploring.<br />
+            Learning.<br />
+            <span>Building.</span>
+          </h2>
+
+        </div>
+
+
+        <div class="now-list reveal">
+
+          <div class="now-item">
+
             <span>01</span>
-            <p>Technology & digital products</p>
+
+            <div>
+              <strong>Technology</strong>
+              <p>
+                Playing with ideas and understanding
+                how digital things work.
+              </p>
+            </div>
+
           </div>
 
-          <div>
+
+          <div class="now-item">
+
             <span>02</span>
-            <p>Creative experiments</p>
+
+            <div>
+              <strong>Creative Experiments</strong>
+              <p>
+                Turning random ideas into something
+                tangible.
+              </p>
+            </div>
+
           </div>
 
-          <div>
+
+          <div class="now-item">
+
             <span>03</span>
-            <p>Ideas that deserve to exist</p>
+
+            <div>
+              <strong>Interesting Ideas</strong>
+              <p>
+                Following things that make me curious
+                enough to dig deeper.
+              </p>
+            </div>
+
           </div>
 
         </div>
@@ -259,26 +434,122 @@
     </section>
 
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
 
-      <div class="contact-inner reveal">
+    <!-- =========================================
+         LAB
+    ========================================== -->
 
-        <p class="label">LET'S CONNECT</p>
+    <section class="section lab-section">
+
+      <div class="section-label reveal">
+
+        <span>05</span>
+
+        <span>THE LAB</span>
+
+      </div>
+
+
+      <div class="lab-card reveal">
+
+        <div class="lab-symbol">
+
+          <span>+</span>
+
+        </div>
+
+
+        <div class="lab-content">
+
+          <span class="eyebrow">
+            EXPERIMENTAL AREA
+          </span>
+
+          <h2>
+            Not everything<br />
+            needs to be finished.
+          </h2>
+
+          <p>
+            Random experiments, prototypes, visual ideas,
+            data experiments and unfinished things that
+            deserve a place to exist.
+          </p>
+
+        </div>
+
+
+        <div class="lab-status">
+
+          <span class="status-dot"></span>
+
+          CURRENTLY BUILDING
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         CONTACT
+    ========================================== -->
+
+    <section id="contact" class="section contact-section">
+
+      <div class="section-label reveal">
+
+        <span>06</span>
+
+        <span>CONTACT</span>
+
+      </div>
+
+
+      <div class="contact-content reveal">
+
+        <p class="eyebrow">
+          HAVE SOMETHING IN MIND?
+        </p>
 
         <h2>
-          Got an idea?
-          <br>
-          <span>Let's make it real.</span>
+          Let's make<br />
+          <span>something.</span>
         </h2>
 
-        <a
-          class="email"
-          href="mailto:hello@nawrajkandel.com.np"
-        >
-          hello@nawrajkandel.com.np
-          <span>↗</span>
-        </a>
+
+        <div class="contact-links">
+
+          <!-- Replace these links with your real profiles -->
+
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>GITHUB</span>
+            <span>↗</span>
+          </a>
+
+
+          <a
+            href="https://linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>LINKEDIN</span>
+            <span>↗</span>
+          </a>
+
+
+          <a href="mailto:YOUR_EMAIL@example.com">
+            <span>EMAIL</span>
+            <span>↗</span>
+          </a>
+
+        </div>
 
       </div>
 
@@ -287,22 +558,36 @@
   </main>
 
 
-  <!-- FOOTER -->
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
   <footer>
 
-    <div>
-      © 2026 Nawraj Kandel
+    <div class="footer-left">
+
+      <span>NAWRAJ KANDEL</span>
+
+      <span>© <span id="year"></span></span>
+
     </div>
 
-    <div class="footer-links">
-      <a href="https://github.com/" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-      <a href="mailto:hello@nawrajkandel.com.np">Email</a>
+
+    <div class="footer-center">
+
+      <span class="status-dot"></span>
+
+      <span>STAY CURIOUS</span>
+
     </div>
 
-    <div>
-      Kathmandu / Nepal
-    </div>
+
+    <a href="#top" class="back-top">
+
+      BACK TO TOP ↑
+
+    </a>
 
   </footer>
 
