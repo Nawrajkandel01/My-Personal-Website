@@ -86,7 +86,7 @@ main {
   color: var(--accent);
 }
 
-/* Headline / typing effect */
+/* Headline / typing effect — pure CSS, no JS dependency */
 h1 {
   font-size: clamp(28px, 6vw, 42px);
   font-weight: 500;
@@ -96,15 +96,10 @@ h1 {
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid var(--accent);
-  width: 0;
-}
-
-h1.typing {
-  animation: type 1.4s steps(20, end) 0.3s forwards;
-}
-
-h1.done-typing {
-  animation: blink 0.85s step-end infinite;
+  width: 15ch;
+  animation:
+    type 1.4s steps(20, end) 0.3s backwards,
+    blink 0.85s step-end infinite 1.7s;
 }
 
 @keyframes type {
@@ -121,25 +116,23 @@ h1.done-typing {
   font-size: 15px;
   margin-bottom: 4px;
   opacity: 0;
-}
-
-.tagline.visible {
-  animation: fade-in 0.6s ease forwards;
+  animation: fade-in 0.6s ease 1.9s forwards;
 }
 
 @keyframes fade-in {
   to { opacity: 1; }
 }
 
-/* Sections */
+/* Sections — CSS-only cascade, each with its own delay */
 section {
   margin-top: 64px;
   opacity: 0;
-}
-
-section.visible {
   animation: fade-in 0.6s ease forwards;
 }
+
+section:nth-of-type(1) { animation-delay: 2.1s; }
+section:nth-of-type(2) { animation-delay: 2.3s; }
+section:nth-of-type(3) { animation-delay: 2.5s; }
 
 .section-label {
   font-size: 12px;
@@ -255,10 +248,7 @@ footer {
   display: flex;
   justify-content: space-between;
   opacity: 0;
-}
-
-footer.visible {
-  animation: fade-in 0.6s ease forwards;
+  animation: fade-in 0.6s ease 2.9s forwards;
 }
 
 a { color: inherit; }
