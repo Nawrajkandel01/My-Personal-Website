@@ -52,7 +52,7 @@ body {
 }
 
 main {
-  position: relative;
+  position: fixed;
   z-index: 2;
   max-width: 640px;
   margin: 0 auto;
