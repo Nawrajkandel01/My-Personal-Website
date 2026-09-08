@@ -1,233 +1,80 @@
-/* =========================================
-   CURSOR GLOW
-========================================= */
+// --- Timed reveal sequence (name types, then sections cascade in) ---
+document.addEventListener('DOMContentLoaded', () => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nameEl = document.getElementById('typed-name');
+  const tagline = document.querySelector('.tagline');
+  const sections = document.querySelectorAll('main > section');
+  const footer = document.querySelector('footer');
 
-const glow = document.querySelector(".cursor-glow");
-
-if (glow) {
-
-  window.addEventListener("mousemove", (event) => {
-
-    glow.style.left = `${event.clientX}px`;
-    glow.style.top = `${event.clientY}px`;
-
-  });
-
-}
-
-
-/* =========================================
-   SCROLL REVEALS
-========================================= */
-
-const revealElements =
-  document.querySelectorAll(".reveal");
-
-
-const observer =
-  new IntersectionObserver(
-
-    (entries) => {
-
-      entries.forEach((entry) => {
-
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add("visible");
-
-          observer.unobserve(entry.target);
-
-        }
-
-      });
-
-    },
-
-    {
-      threshold: 0.12,
-
-      rootMargin: "0px 0px -40px 0px"
-    }
-
-  );
-
-
-revealElements.forEach((element) => {
-
-  observer.observe(element);
-
-});
-
-
-/* =========================================
-   MAGNETIC PROJECT EFFECT
-========================================= */
-
-const projects =
-  document.querySelectorAll(".project");
-
-
-projects.forEach((project) => {
-
-  project.addEventListener("mousemove", (event) => {
-
-    /*
-      Don't use the magnetic effect on
-      touch/mobile devices.
-    */
-
-    if (window.innerWidth <= 800) {
-      return;
-    }
-
-
-    const rect =
-      project.getBoundingClientRect();
-
-
-    const x =
-      (event.clientX -
-        rect.left -
-        rect.width / 2) * 0.012;
-
-
-    const y =
-      (event.clientY -
-        rect.top -
-        rect.height / 2) * 0.012;
-
-
-    project.style.transform =
-      `translate(${x}px, ${y}px)`;
-
-  });
-
-
-  project.addEventListener("mouseleave", () => {
-
-    project.style.transform =
-      "translate(0, 0)";
-
-  });
-
-});
-
-
-/* =========================================
-   NAVBAR ON SCROLL
-========================================= */
-
-const navbar =
-  document.querySelector(".navbar");
-
-
-function updateNavbar() {
-
-  if (!navbar) {
+  if (reduceMotion) {
+    // Skip straight to final state, no animation
+    nameEl.style.width = 'auto';
+    nameEl.style.borderRight = 'none';
+    tagline.classList.add('visible');
+    tagline.style.opacity = '1';
+    sections.forEach(s => { s.classList.add('visible'); s.style.opacity = '1'; });
+    footer.classList.add('visible');
+    footer.style.opacity = '1';
     return;
   }
 
+  // Type the name
+  nameEl.classList.add('typing');
 
-  if (window.scrollY > 40) {
+  // After typing finishes (~1.7s from page load), start blinking cursor
+  setTimeout(() => {
+    nameEl.classList.remove('typing');
+    nameEl.classList.add('done-typing');
+    nameEl.style.width = '15ch';
+  }, 1700);
 
-    navbar.classList.add("scrolled");
+  // Cascade reveal: tagline, then each section, then footer
+  setTimeout(() => tagline.classList.add('visible'), 1900);
+  sections.forEach((section, i) => {
+    setTimeout(() => section.classList.add('visible'), 2100 + i * 200);
+  });
+  setTimeout(() => footer.classList.add('visible'), 2100 + sections.length * 200 + 200);
+});
 
-  } else {
+// --- Code rain background ---
+(function () {
+  const canvas = document.getElementById('rain-canvas');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    navbar.classList.remove("scrolled");
-
+  if (reduceMotion) {
+    canvas.style.display = 'none';
+    return;
   }
 
-}
+  let w, h, columns, drops;
+  const chars = '01アイウエオカキクケコサシスセソ{}[]<>/*+-=;';
+  const fontSize = 14;
 
+  function setup() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    columns = Math.floor(w / fontSize);
+    drops = Array(columns).fill(0).map(() => Math.random() * -100);
+  }
 
-window.addEventListener(
-  "scroll",
-  updateNavbar,
-  { passive: true }
-);
+  function draw() {
+    ctx.fillStyle = 'rgba(10, 11, 13, 0.08)';
+    ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = '#4ADE80';
+    ctx.font = fontSize + 'px monospace';
 
-
-updateNavbar();
-
-
-/* =========================================
-   CURRENT YEAR
-========================================= */
-
-const year =
-  document.getElementById("year");
-
-
-if (year) {
-
-  year.textContent =
-    new Date().getFullYear();
-
-}
-
-
-/* =========================================
-   SMOOTH NAVIGATION
-========================================= */
-
-document
-  .querySelectorAll('a[href^="#"]')
-  .forEach((link) => {
-
-    link.addEventListener("click", (event) => {
-
-      const targetId =
-        link.getAttribute("href");
-
-
-      if (
-        !targetId ||
-        targetId === "#"
-      ) {
-        return;
+    for (let i = 0; i < drops.length; i++) {
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+      if (drops[i] * fontSize > h && Math.random() > 0.975) {
+        drops[i] = 0;
       }
+      drops[i]++;
+    }
+  }
 
-
-      const target =
-        document.querySelector(targetId);
-
-
-      if (!target) {
-        return;
-      }
-
-
-      event.preventDefault();
-
-
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-
-    });
-
-  });
-
-
-/* =========================================
-   PROJECT HOVER — RANDOM GLITCH OFFSET
-========================================= */
-
-projects.forEach((project) => {
-
-  project.addEventListener("mouseenter", () => {
-
-    project.classList.add("hovered");
-
-  });
-
-
-  project.addEventListener("mouseleave", () => {
-
-    project.classList.remove("hovered");
-
-  });
-
-});
+  setup();
+  window.addEventListener('resize', setup);
+  setInterval(draw, 45);
+})();
