@@ -1,98 +1,52 @@
-// ---- Typed hero line ----
+// ---- Matrix-style code rain, low opacity, behind vignette ----
 
-const typeTarget = document.getElementById('typeLine');
-
-const fullText = "whoami\n> Nawraj — 18, Kathmandu. building toward independence, one quiet decision at a time.";
-
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function typeText(el, text, speed = 28) {
-  let i = 0;
-  el.textContent = '';
-  function step() {
-    if (i < text.length) {
-      el.textContent += text.charAt(i);
-      i++;
-      setTimeout(step, speed);
-    }
-  }
-  step();
-}
-
-if (reduceMotion) {
-  typeTarget.textContent = fullText;
-} else {
-  typeText(typeTarget, fullText);
-}
-
-// ---- Subtle animated scanline background ----
-
-const canvas = document.getElementById('bg');
+const canvas = document.getElementById('rain-canvas');
 const ctx = canvas.getContext('2d');
+let w, h, columns, drops;
+const chars = '01アイウエオカキクケコサシスセソ{}[]<>/*+-=;';
+const fontSize = 14;
 
-let w, h;
-function resize() {
+function setup() {
   w = canvas.width = window.innerWidth;
   h = canvas.height = window.innerHeight;
+  columns = Math.floor(w / fontSize);
+  drops = Array(columns).fill(0).map(() => Math.random() * -100);
 }
-resize();
-window.addEventListener('resize', resize);
+setup();
+window.addEventListener('resize', setup);
 
-let scanY = 0;
+function draw() {
+  ctx.fillStyle = 'rgba(10, 11, 13, 0.08)';
+  ctx.fillRect(0, 0, w, h);
+  ctx.fillStyle = '#4ADE80';
+  ctx.font = fontSize + 'px monospace';
 
-function drawGrid() {
-  ctx.clearRect(0, 0, w, h);
-
-  // faint static grid
-  ctx.strokeStyle = 'rgba(78, 232, 181, 0.035)';
-  ctx.lineWidth = 1;
-  const gap = 48;
-
-  for (let x = 0; x < w; x += gap) {
-    ctx.beginPath();
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, h);
-    ctx.stroke();
+  for (let i = 0; i < drops.length; i++) {
+    const char = chars[Math.floor(Math.random() * chars.length)];
+    ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+    if (drops[i] * fontSize > h && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
   }
-  for (let y = 0; y < h; y += gap) {
-    ctx.beginPath();
-    ctx.moveTo(0, y);
-    ctx.lineTo(w, y);
-    ctx.stroke();
-  }
-
-  // moving scanline band
-  const gradient = ctx.createLinearGradient(0, scanY - 60, 0, scanY + 60);
-  gradient.addColorStop(0, 'rgba(78, 232, 181, 0)');
-  gradient.addColorStop(0.5, 'rgba(78, 232, 181, 0.05)');
-  gradient.addColorStop(1, 'rgba(78, 232, 181, 0)');
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, scanY - 60, w, 120);
-
-  scanY += 0.6;
-  if (scanY > h + 60) scanY = -60;
 }
 
-function animate() {
-  drawGrid();
-  requestAnimationFrame(animate);
-}
-
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!reduceMotion) {
-  animate();
+  setInterval(draw, 45);
 } else {
-  drawGrid();
+  canvas.style.display = 'none';
 }
 
 // ---- Discord handle wiring ----
-// Fill this in once you give me the actual handle/link.
-const discordHandle = null; // e.g. "nawraj#0001" or a discord.gg invite link
+// Fill this in with your actual handle or invite link, then reload.
+const discordHandle = null; // e.g. "nawraj111" or "https://discord.gg/yourinvite"
 
 const discordLink = document.getElementById('discordLink');
-const discordValue = document.getElementById('discordValue');
+const discordHandleEl = document.getElementById('discordHandle');
 
 if (discordHandle) {
-  discordValue.textContent = discordHandle;
+  discordHandleEl.textContent = discordHandle;
   discordLink.href = discordHandle.startsWith('http')
     ? discordHandle
     : '#';
