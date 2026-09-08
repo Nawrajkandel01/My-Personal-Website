@@ -3,82 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nawraj Kandel</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>nawraj</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<canvas id="rain-canvas"></canvas>
-<div class="vignette"></div>
+<canvas id="bg"></canvas>
 
 <main>
-  <div class="terminal-bar">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span>~/nawraj</span>
-  </div>
 
-  <div class="prompt-line">whoami</div>
-  <h1 id="typed-name">Nawraj Kandel</h1>
-  <p class="tagline">building toward AI/ML &amp; offensive security — minimalist by choice, technical by direction.</p>
-
-  <section>
-    <div class="section-label">about</div>
-    <p>18, based in Kathmandu. I care more about understanding systems deeply than collecting titles — that applies to computers and to how I try to live.</p>
-    <p>Not here to perform a portfolio I don't have yet. This page exists so people can actually find and reach me.</p>
-  </section>
-
-  <section>
-    <div class="section-label">status</div>
-    <div class="status-line">
-      <span class="pulse"></span>
-      <span class="status-key">learning</span>
-      <span class="status-val">networking fundamentals, Python, Linux</span>
-    </div>
-    <div class="status-line">
-      <span class="status-key">direction</span>
-      <span class="status-val">AI/ML + offensive cybersecurity</span>
-    </div>
-    <div class="status-line">
-      <span class="status-key">based in</span>
-      <span class="status-val">Kathmandu, Nepal</span>
+  <section id="hero">
+    <div class="term">
+      <div class="term-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="term-path">nawraj@kathmandu:~$</span>
+      </div>
+      <div class="term-body">
+        <p class="type-line" id="typeLine"></p>
+        <p class="cursor-line"><span class="prompt">&gt;</span> <span class="blink">_</span></p>
+      </div>
     </div>
   </section>
 
-  <section>
-    <div class="section-label">connect</div>
-    <div class="links">
-      <a class="link-row" href="mailto:your@email.com">
-        <div class="link-left">
-          <span class="link-name">Email</span>
-          <span class="link-handle">your@email.com</span>
-        </div>
-        <span class="link-arrow">→</span>
+  <section id="about">
+    <p class="tag"># about</p>
+    <div class="points">
+      <p><span class="marker">01</span> I keep things minimal on purpose. Fewer possessions, fewer commitments, fewer things pulling attention in different directions — it's easier to think clearly when there's less noise to filter out.</p>
+      <p><span class="marker">02</span> I care about kindness that isn't performed for anyone. If it's not useful or sincere, it's not worth saying — the same goes for help. It should come from actually wanting to, not from wanting to be seen doing it.</p>
+      <p><span class="marker">03</span> Peace, to me, isn't the absence of ambition. I'm building toward independence — my own income, my own pace, my own decisions — but I'd rather get there quietly than loudly.</p>
+      <p><span class="marker">04</span> I'd rather be direct and occasionally wrong than vague and safe. Say the real thing, take the correction, move on.</p>
+    </div>
+  </section>
+
+  <section id="interests">
+    <p class="tag"># interests</p>
+    <div class="points">
+      <p><span class="marker">01</span> AI / ML — how these systems actually learn, not just how to call an API. Currently early in this, building from fundamentals up.</p>
+      <p><span class="marker">02</span> Offensive security — thinking like an attacker to understand how systems really break, not just how they're supposed to work.</p>
+      <p><span class="marker">03</span> BSc CSIT, St. Xavier's College, Kathmandu — this is the long runway for both.</p>
+    </div>
+  </section>
+
+  <section id="links">
+    <p class="tag"># links</p>
+    <div class="link-list">
+      <a href="https://github.com/Nawrajkandel01" target="_blank" rel="noopener noreferrer" class="link-row">
+        <span class="link-label">github</span>
+        <span class="link-value">nawraj111</span>
       </a>
-      <a class="link-row" href="https://discord.com/users/yourid" target="_blank" rel="noopener">
-        <div class="link-left">
-          <span class="link-name">Discord</span>
-          <span class="link-handle">@yourhandle</span>
-        </div>
-        <span class="link-arrow">→</span>
+      <a href="https://www.linkedin.com/in/nawraj-kandel-001995327" target="_blank" rel="noopener noreferrer" class="link-row">
+        <span class="link-label">linkedin</span>
+        <span class="link-value">nawraj-kandel</span>
       </a>
-      <a class="link-row" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">
-        <div class="link-left">
-          <span class="link-name">LinkedIn</span>
-          <span class="link-handle">/in/yourprofile</span>
-        </div>
-        <span class="link-arrow">→</span>
+      <a href="#" id="discordLink" target="_blank" rel="noopener noreferrer" class="link-row">
+        <span class="link-label">discord</span>
+        <span class="link-value" id="discordValue">add handle</span>
       </a>
     </div>
   </section>
 
   <footer>
-    <span>© 2026 Nawraj Kandel</span>
-    <span>Kathmandu, NP</span>
+    <p>built from scratch. kathmandu.</p>
   </footer>
+
 </main>
 
 <script src="script.js"></script>
