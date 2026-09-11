@@ -46,14 +46,14 @@ body {
 .vignette {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 11;
+  z-index: 0;
   pointer-events: none;
   background: radial-gradient(ellipse at 50% 40%, transparent 0%, var(--bg) 78%);
 }
 
 main {
   position: relative;
-  z-index: 12;
+  z-index: 0;
   max-width: 640px;
   margin: 0 auto;
   padding: 12vh 24px 10vh;
